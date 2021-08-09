@@ -1,6 +1,6 @@
 ﻿namespace SimpleCalc.Services
 {
-    internal interface ICalcService
+    public interface ICalcService
     {
         int AddNumbers(int x, int y);
     }

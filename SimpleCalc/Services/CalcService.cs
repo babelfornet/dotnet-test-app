@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SimpleCalc.Services
 {
-    internal class CalcService : ICalcService
+    public class CalcService : ICalcService
     {
         public int AddNumbers(int x, int y)
         {
