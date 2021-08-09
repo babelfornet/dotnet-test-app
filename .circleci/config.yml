@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: "Add private NuGet feed"
-          command: dotnet.exe nuget add source add https://ci.appveyor.com/nuget/babelfornet-rmvl3l0ousvg --name AppVeyor --username info@babelfor.net --password akira28570 --store-password-in-clear-text
+          command: dotnet.exe nuget add source https://ci.appveyor.com/nuget/babelfornet-rmvl3l0ousvg --name AppVeyor --username info@babelfor.net --password akira28570 --store-password-in-clear-text
       - restore_cache:
           keys:
             - dotnet-packages-v1-{{ checksum "SimpleCalc/SimpleCalc.csproj" }}      
