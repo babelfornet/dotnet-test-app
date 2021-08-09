@@ -34,6 +34,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Add private NuGet feed"
+          command: dotnet.exe nuget add source https://ci.appveyor.com/nuget/babelfornet-rmvl3l0ousvg --name AppVeyor --username info@babelfor.net --password akira28570 --store-password-in-clear-text
+      - run:
           name: "Build Application according to some given configuration"
           command: dotnet.exe build --configuration Release
 workflows:
