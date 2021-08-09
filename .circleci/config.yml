@@ -9,16 +9,19 @@ jobs:
       name: windows/default
     steps:
       - checkout
+      - run:
+          name: "Add private NuGet feed"
+          command: dotnet.exe nuget add source add https://ci.appveyor.com/nuget/babelfornet-rmvl3l0ousvg --name AppVeyor --username info@babelfor.net --password akira28570 --store-password-in-clear-text
       - restore_cache:
           keys:
-            - dotnet-packages-v1-{{ checksum "SimpleCalc/SimpleCalc.csproj" }}
+            - dotnet-packages-v1-{{ checksum "SimpleCalc/SimpleCalc.csproj" }}      
       - run:
           name: "Install project dependencies"
           command: dotnet.exe restore
       - save_cache:
           paths:
             - C:\Users\circleci\.nuget\packages
-          key: dotnet-packages-v1-{{ checksum "SimpleCalc/SimpleCalc.csproj" }}
+          key: dotnet-packages-v1-{{ checksum "SimpleCalc/SimpleCalc.csproj" }}        
       - run:
           name: "Run Application Tests"
           command: dotnet.exe test -v n --results-directory:test_coverage --collect:"Code Coverage"
